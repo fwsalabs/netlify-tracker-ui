@@ -1,0 +1,36 @@
+<div class="container">
+
+    <table class="table table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Github </th>
+                <th scope="col"> Live Url </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let site of (siteList | async)">
+                <th scope="row">
+                    {{site.id}}
+                </th>
+                <td>
+                    {{site.name}}
+                </td>
+                <td>
+                    <a href=" {{site.build_settings.repo_url}}" target="_blank" rel="noopener noreferrer">
+                        {{site.build_settings.repo_url}}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{site.default_domain}}" target="_blank" rel="noopener noreferrer">
+                        {{site.default_domain}}
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
