@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: "http://localhost:9003/"
+  api_url: "https://api-netlify-tracker.herokuapp.com/api/v1/"
 };
