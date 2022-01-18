@@ -15,5 +15,9 @@ export class SitesService {
     return this.http.get(this.url);
   }
 
+  createSite(data: { name: string, repo: { provider: string, repo: string, branch?: string, private?: boolean } }) {
+    return this.http.post(this.url, data);
+  }
+
 
 }

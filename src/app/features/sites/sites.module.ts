@@ -5,16 +5,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListSiteComponent } from './list-site/list-site.component';
 import { SitesRoutingModule } from './sites.routing';
 import { SitesService } from './sites.service';
+import { CreateSiteComponent } from './create-site/create-site.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    ListSiteComponent
+    ListSiteComponent,
+    CreateSiteComponent
   ],
   imports: [
     CommonModule,
     SitesRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     SitesService
