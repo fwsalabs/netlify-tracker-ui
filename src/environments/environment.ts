@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: "http://localhost:9003/api/v1/"
+  // api_url: "http://localhost:9003/api/v1/"
+  api_url: "https://api-netlify-tracker.herokuapp.com/api/v1/"
 };
 
 /*

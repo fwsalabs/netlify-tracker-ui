@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './core/auth/auth.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'sites',
     pathMatch: 'full'
+  },
+  {
+    path: "oauth2/code/github",
+    component: AuthComponent
   },
   {
     path: "sites",

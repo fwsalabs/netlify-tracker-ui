@@ -1,13 +1,13 @@
 <div class="container">
 
-    <div class="d-flex">
-        <!-- <button class="btn btn-primary">
-            Create
-        </button> -->
+    <div class="d-flex justify-content-end">
+        <a routerLink="create" class="btn btn-primary">
+            Create Site
+        </a>
     </div>
 
 
-    <table class="table table-bordered table-hover ">
+    <table class="table table-bordered table-hover mt-3">
         <thead>
             <tr>
                 <th scope="col"> ID </th>
@@ -18,9 +18,9 @@
         </thead>
         <tbody>
 
-            <tr *ngFor="let site of (siteList | async)">
+            <tr *ngFor="let site of (siteList | async);let i = index;">
                 <th scope="row">
-                    {{site.id}}
+                    {{i + 1 }}
                 </th>
                 <td>
                     {{site.name}}

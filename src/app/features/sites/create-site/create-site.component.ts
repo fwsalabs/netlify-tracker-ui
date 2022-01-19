@@ -42,7 +42,7 @@ export class CreateSiteComponent implements OnInit {
       name: value.name,
       repo: {
         provider: "github",
-        repo: value.repo,
+        repo: "fwsalabs/" + value.repo,
         branch: "main",
       }
     }
