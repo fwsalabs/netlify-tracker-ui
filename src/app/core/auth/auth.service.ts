@@ -22,9 +22,7 @@ export class AuthService {
   isAuthenticated() {
     let isAuthenticated: boolean = false;
     const token = this.commonService.getLs('accessToken');
-    console.log(token);
-    if ( token && token !== null ) { isAuthenticated = true };
-    console.log(isAuthenticated);
+    if (token && token !== null) { isAuthenticated = true };
     return isAuthenticated;
   }
 

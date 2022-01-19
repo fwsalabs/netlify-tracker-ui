@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/sites/sites.module').then(m => m.SitesModule)
   },
   {
+    path: "repos",
+    loadChildren: () => import('./features/repo/repo.module').then(m => m.RepoModule)
+  },
+  {
     path: '**',
     redirectTo: 'sites',
     pathMatch: 'full'
