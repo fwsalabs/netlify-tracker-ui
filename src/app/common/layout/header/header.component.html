@@ -19,7 +19,8 @@
                     Login
                 </a>
 
-                <button *ngIf="isAuthenticated" type="button" class="btn btn-warning"> Sign out </button>
+                <button *ngIf="isAuthenticated" type="button" (click)="logout()" class="btn btn-warning"> Sign out
+                </button>
 
             </div>
         </div>

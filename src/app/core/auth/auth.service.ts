@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/common/common.service';
 
 @Injectable({
@@ -9,7 +10,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private router: Router
   ) { }
 
   getAccessToken(code: String) {
@@ -19,11 +21,15 @@ export class AuthService {
 
   isAuthenticated() {
     let isAuthenticated: boolean = false;
-    if (this.commonService.getLs('accessToken') !== null) { isAuthenticated = true };
+    const token = this.commonService.getLs('accessToken');
+    console.log(token);
+    if ( token && token !== null ) { isAuthenticated = true };
+    console.log(isAuthenticated);
     return isAuthenticated;
   }
 
   logout() {
     localStorage.clear();
+    this.router.navigateByUrl('/sites');
   }
 }

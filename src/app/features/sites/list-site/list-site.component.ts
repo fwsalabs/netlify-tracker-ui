@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { SitesService } from '../sites.service';
 
 @Component({
@@ -10,17 +11,17 @@ export class ListSiteComponent implements OnInit {
   siteList: any;
 
   constructor(
-    private sitesService: SitesService
+    private sitesService: SitesService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
-    this.siteList = this.sitesService.getSites()
-      // .subscribe(res => {
-      //   console.log(res);
-      //   this.siteList = res;
-      // });
+    this.siteList = this.sitesService.getSites();
   }
 
 
+  get isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
 
 }
