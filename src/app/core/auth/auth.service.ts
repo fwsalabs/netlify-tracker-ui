@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
 
 @Injectable({
@@ -19,7 +20,7 @@ export class AuthService {
     return this.http.get(url);
   }
 
-  isAuthenticated() {
+  get isAuthenticated() {
     let isAuthenticated: boolean = false;
     const token = this.commonService.getLs('accessToken');
     if (token && token !== null) { isAuthenticated = true };
@@ -30,4 +31,6 @@ export class AuthService {
     localStorage.clear();
     this.router.navigateByUrl('/sites');
   }
+
+
 }

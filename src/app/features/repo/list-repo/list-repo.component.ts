@@ -22,7 +22,7 @@ export class ListRepoComponent implements OnInit {
   }
 
   get isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
+    return this.authService.isAuthenticated;
   }
 
 

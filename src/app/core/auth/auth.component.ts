@@ -35,8 +35,9 @@ export class AuthComponent implements OnInit {
             this.commonService.setLs("accessToken", res.access_token);
             this.commonService.setLs("scope", res.scope);
             this.commonService.setLs("token_type", res.token_type);
-            this.router.navigateByUrl("/sites")
 
+            this.commonService.getUserDetails();
+            this.router.navigateByUrl("/sites");
           })
       }
 

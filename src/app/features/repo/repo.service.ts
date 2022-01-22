@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CommonService } from 'src/app/common/common.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable()
 export class RepoService {
 
-  private url: string = 'https://api.github.com/';
-  private orgUrl: string = this.url + 'orgs/Devops-Testing-YOLO/repos';
-  private userUrl: string = this.url + 'users/fwsalabs/repos'
+  private url: string = environment.api_url + "repos";
 
   constructor(
     private http: HttpClient,
@@ -19,11 +18,13 @@ export class RepoService {
   }
 
   getRepos() {
-    return this.http.get(this.userUrl, {
-      headers: {
-        "Authorization": "Bearer " + this.getAccessToken
-      }
-    });
+
+    return this.http.get(this.url);
   }
+
+  createRepo(data: { name: string, private: boolean, auto_init: boolean }) {
+    return this.http.post(this.url, data);
+  }
+
 
 }

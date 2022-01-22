@@ -21,7 +21,7 @@ export class ListSiteComponent implements OnInit {
 
 
   get isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
+    return this.authService.isAuthenticated;
   }
 
 }

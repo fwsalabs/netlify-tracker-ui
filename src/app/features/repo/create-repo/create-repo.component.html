@@ -1,0 +1,60 @@
+<div class="container">
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <form [formGroup]="repoForm" (submit)="submitForm()">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label"> Repository Name </label>
+                    <input type="text" class="form-control" formControlName="name" id="repoName" placeholder="">
+                </div>
+
+                <!-- <div class="mb-3">
+                    <label for="projectType" class="form-label"> Project Type </label>
+                    <select class="form-select" formControlName="projectType" id="projectType"
+                        aria-label="Default select example">
+                        <option selected disabled value="null">Select a Project Type</option>
+                        <option value="js">HTML</option>
+                        <option disabled value="java">Core JAVA</option>
+                        <option disabled value="webProject">Web Project</option>
+                        <option disabled value="springBoot">Spring Boot</option>
+                    </select>
+                </div> -->
+
+
+                <!-- <div class="mb-3">
+                    <label class="form-label"> Do you want this Project to be hosted? </label>
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="host" type="radio" name="host" value="true"
+                            id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="host" type="radio" name="host" value="false"
+                            id="flexRadioDefault2" checked="true">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            No
+                        </label>
+                    </div>
+                </div> -->
+
+
+                <button class="btn btn-primary" type="submit">
+                    Create Repo
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</div>

@@ -1,4 +1,4 @@
-<header class="p-3 bg-light text-dark">
+<header class="p-2 bg-light text-dark">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
@@ -11,16 +11,44 @@
                 <li><a routerLink="/sites" class="nav-link px-2 text-black"> Sites </a></li>
             </ul>
 
+
+
+            <div class="profile-dropdown">
+
+
+            </div>
+
+
             <div class="text-end">
 
                 <a *ngIf="!isAuthenticated"
-                    href="https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123"
+                    href="https://github.com/login/oauth/authorize?client_id=2afa85f6b65eddb897b5&scope=user repo admin:org&state=123"
                     class="btn btn-outline-dark me-2">
                     Login
                 </a>
 
-                <button *ngIf="isAuthenticated" type="button" (click)="logout()" class="btn btn-warning"> Sign out
-                </button>
+                <div *ngIf="isAuthenticated && userDetails" class="dropdown">
+
+                    <button class="btn btn-link text-decoration-none text-dark" type="button" id="profileDropdownMenu"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="d-flex flex-row align-items-center">
+                            <img class="me-2 rounded-circle" src="{{userDetails.avatar_url}}" width="40" height="40"
+                                alt="profile_picture">
+                            <span>
+                                <h6 class="mb-0 text-start"> {{userDetails.name}} </h6>
+                                <small class="mb-0"> {{userDetails.login}} </small>
+                            </span>
+                        </span>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMenu">
+                        <!-- <li><a class="dropdown-item">Action</a></li> -->
+                        <!-- <li><a class="dropdown-item">Another action</a></li> -->
+                        <li><a class="dropdown-item" (click)="logout()"> Sign Out </a></li>
+                    </ul>
+
+                </div>
+
 
             </div>
         </div>
