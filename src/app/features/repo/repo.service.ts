@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CommonService } from 'src/app/common/common.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class RepoService {
@@ -18,7 +18,6 @@ export class RepoService {
   }
 
   getRepos() {
-
     return this.http.get(this.url);
   }
 

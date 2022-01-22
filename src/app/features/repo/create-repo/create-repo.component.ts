@@ -49,9 +49,10 @@ export class CreateRepoComponent implements OnInit {
     }
 
     const collaborator = this.commonService.getLs("username");
-    const data = Object.assign(value, { collaborator });
 
-    this.repoService.createRepo(value)
+    const data = Object.assign(value, { collaborators: [collaborator] });
+
+    this.repoService.createRepo(data)
       .subscribe(res => {
         this.toastr.success("Repository Created Successfully");
         this.router.navigateByUrl("/repos")
