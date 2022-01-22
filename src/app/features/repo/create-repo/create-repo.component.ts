@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/common/common.service';
 import { RepoService } from '../repo.service';
 
 @Component({
@@ -16,8 +17,9 @@ export class CreateRepoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
+    private commonService: CommonService,
     private repoService: RepoService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -40,12 +42,14 @@ export class CreateRepoComponent implements OnInit {
   submitForm() {
 
     const { value, invalid } = this.repoForm;
-    console.log(value);
 
     if (invalid) {
       this.toastr.error("Invalid Form Input")
       return;
     }
+
+    const collaborator = this.commonService.getLs("username");
+    const data = Object.assign(value, { collaborator });
 
     this.repoService.createRepo(value)
       .subscribe(res => {

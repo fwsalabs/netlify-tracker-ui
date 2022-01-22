@@ -9,11 +9,11 @@ import * as SecureLS from 'secure-ls';
 export class CommonService {
 
   private secureLs: SecureLS;
-  
+
   private userDetails$ = new BehaviorSubject<any>(undefined);
   userDetails = this.userDetails$.asObservable();
 
-  userName: String | undefined;
+  userName: string | undefined;
 
   constructor(
     private http: HttpClient
@@ -45,6 +45,9 @@ export class CommonService {
       }).subscribe((res: any) => {
         this.userDetails$.next(res);
         this.userName = res.login;
+        if (this.userName) {
+          this.setLs("username", this.userName)
+        }
       })
     }
 
