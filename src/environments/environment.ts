@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   // api_url: "http://localhost:9003/api/v1/"
-  api_url: "https://api-netlify-tracker.herokuapp.com/api/v1/"
+  api_url: "https://api-netlify-tracker.herokuapp.com/api/v1/",
+  // db_api_url: "http://localhost:9004/api/v1/"
+  db_api_url: "https://api-db-netlify-tracker.herokuapp.com/api/v1/"
 };
 
 /*

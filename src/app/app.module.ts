@@ -9,6 +9,7 @@ import { HeaderComponent } from './common/layout/header/header.component';
 import { LayoutComponent } from './common/layout/layout.component';
 import { AuthComponent } from './core/auth/auth.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
   providers: [],
