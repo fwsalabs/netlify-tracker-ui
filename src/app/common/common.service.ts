@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import * as SecureLS from 'secure-ls';
+import { AuthService } from '../core/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +12,19 @@ export class CommonService {
 
   private secureLs: SecureLS;
 
-  private userDetails$ = new BehaviorSubject<any>(undefined);
-  userDetails = this.userDetails$.asObservable();
+  userDetails: any;
 
   userName: string | undefined;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
   ) {
     this.secureLs = new SecureLS({ encodingType: 'aes', encryptionSecret: 'hastaLaVistaBaby' });
+
+    this.userDetails = this.authService.userDetails$.asObservable();
+
     this.getUserDetails();
   }
 
@@ -32,7 +38,7 @@ export class CommonService {
 
   getUserDetails() {
 
-    if (this.userDetails$.value) {
+    if (this.authService.userDetails$.value) {
       return;
     }
     const accessToken = this.getLs("accessToken");
@@ -43,10 +49,23 @@ export class CommonService {
           "Authorization": "Bearer " + accessToken
         }
       }).subscribe((res: any) => {
-        this.userDetails$.next(res);
+        this.authService.userDetails$.next(res);
         this.userName = res.login;
-        if (this.userName) {
-          this.setLs("username", this.userName)
+
+        console.log(this.authService.loginWithUsername);
+        console.log(this.userName);
+
+        // if (this.userName) {
+        //   this.setLs("username", this.userName);
+        // }
+
+        if (this.userName && this.userName === this.authService.loginWithUsername) {
+          this.setLs("username", this.userName);
+          this.router.navigateByUrl("/sites");
+        }
+
+        if (this.userName && this.userName !== this.authService.loginWithUsername) {
+          this.authService.logout();
         }
       })
     }

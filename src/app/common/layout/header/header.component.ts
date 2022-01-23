@@ -24,9 +24,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.buildForm();
-    this.commonService.userDetails.subscribe(res => {
-      this.userDetails = res;
-    })
+    this.commonService.userDetails
+      .subscribe(
+        (res: any) => {
+          this.userDetails = res;
+        })
   }
 
   get isAuthenticated(): boolean {
@@ -51,7 +53,6 @@ export class HeaderComponent implements OnInit {
       this.toastr.error("Invalid Form Input");
     }
 
-
     this.authService.checkUserExist(value)
       .subscribe(
         (res: any) => {
@@ -60,6 +61,8 @@ export class HeaderComponent implements OnInit {
             this.toastr.error("User Does Not Exist");
             return;
           }
+
+          this.authService.loginWithUsername = res.username;
           window.location.href = "https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123&login=" + res.username;
         })
   }
