@@ -14,8 +14,6 @@ export class AuthService {
   private db_url = environment.db_api_url;
   userDetails$ = new BehaviorSubject<any>(undefined);
 
-  loginWithUsername!: string;
-
   constructor(
     private http: HttpClient,
     private router: Router

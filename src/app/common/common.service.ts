@@ -52,19 +52,17 @@ export class CommonService {
         this.authService.userDetails$.next(res);
         this.userName = res.login;
 
-        console.log(this.authService.loginWithUsername);
+        const loginWithUsername = this.getLs("LoginWithUsername");
+
+        console.log(loginWithUsername);
         console.log(this.userName);
 
-        // if (this.userName) {
-        //   this.setLs("username", this.userName);
-        // }
-
-        if (this.userName && this.userName === this.authService.loginWithUsername) {
+        if (this.userName && this.userName === loginWithUsername) {
           this.setLs("username", this.userName);
           this.router.navigateByUrl("/sites");
         }
 
-        if (this.userName && this.userName !== this.authService.loginWithUsername) {
+        if (this.userName && this.userName !== loginWithUsername) {
           this.authService.logout();
         }
       })
