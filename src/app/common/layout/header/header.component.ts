@@ -63,6 +63,7 @@ export class HeaderComponent implements OnInit {
           }
 
           this.authService.loginWithUsername = res.username;
+          console.log(" loginWithUsername => " + this.authService.loginWithUsername);
           window.location.href = "https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123&login=" + res.username;
         })
   }
