@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import * as SecureLS from 'secure-ls';
 import { AuthService } from '../core/auth/auth.service';
@@ -14,11 +15,12 @@ export class CommonService {
 
   userDetails: any;
 
-  userName: string | undefined;
+  userName!: string;
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
+    private toastr: ToastrService,
     private router: Router,
   ) {
     this.secureLs = new SecureLS({ encodingType: 'aes', encryptionSecret: 'hastaLaVistaBaby' });
@@ -49,21 +51,28 @@ export class CommonService {
           "Authorization": "Bearer " + accessToken
         }
       }).subscribe((res: any) => {
-        this.authService.userDetails$.next(res);
         this.userName = res.login;
 
-        const loginWithUsername = this.getLs("LoginWithUsername");
+        if (this.userName) {
 
-        console.log(loginWithUsername);
-        console.log(this.userName);
+          this.authService.checkUserExist({ email: this.userName })
+            .subscribe(
+              (emailCheckRes: any) => {
 
-        if (this.userName && this.userName === loginWithUsername) {
-          this.setLs("username", this.userName);
-          this.router.navigateByUrl("/sites");
-        }
+                console.log(emailCheckRes);
+                if (emailCheckRes.exist === false) {
+                  this.authService.logout();
+                  this.toastr.error("User Does Not Exist");
+                  this.router.navigateByUrl("/");
+                  return;
+                }
 
-        if (this.userName && this.userName !== loginWithUsername) {
-          this.authService.logout();
+                this.authService.userDetails$.next(res);
+                this.setLs("username", this.userName);
+                this.router.navigateByUrl("/sites");
+
+              }
+            )
         }
       })
     }

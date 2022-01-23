@@ -46,29 +46,29 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  submitLoginForm() {
-    const { value, invalid } = this.loginForm;
+  // submitLoginForm() {
+  //   const { value, invalid } = this.loginForm;
 
-    if (invalid) {
-      this.toastr.error("Invalid Form Input");
-    }
+  //   if (invalid) {
+  //     this.toastr.error("Invalid Form Input");
+  //   }
 
-    this.authService.checkUserExist(value)
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-          if (res.exist === false) {
-            this.toastr.error("User Does Not Exist");
-            return;
-          }
+  //   this.authService.checkUserExist(value)
+  //     .subscribe(
+  //       (res: any) => {
+  //         console.log(res);
+  //         if (res.exist === false) {
+  //           this.toastr.error("User Does Not Exist");
+  //           return;
+  //         }
 
-          // this.authService.loginWithUsername = res.username;
+  //         // this.authService.loginWithUsername = res.username;
 
-          this.commonService.setLs("LoginWithUsername", res.username);
+  //         this.commonService.setLs("LoginWithUsername", res.username);
 
-          console.log(" loginWithUsername => " + this.commonService.getLs("LoginWithUsername"));
-          window.location.href = "https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123&login=" + res.username;
-        })
-  }
+  //         console.log(" loginWithUsername => " + this.commonService.getLs("LoginWithUsername"));
+  //         window.location.href = "https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123&login=" + res.username;
+  //       })
+  // }
 
 }

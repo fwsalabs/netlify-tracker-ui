@@ -21,16 +21,16 @@
 
             <div class="text-end">
 
-                <!-- <a *ngIf="!isAuthenticated"
+                <a *ngIf="!isAuthenticated"
                     href="https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123"
                     class="btn btn-outline-dark me-2">
                     Login
-                </a> -->
+                </a>
 
-                <button *ngIf="!isAuthenticated" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                <!-- <button *ngIf="!isAuthenticated" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#loginModal">
                     Login
-                </button>
+                </button> -->
 
                 <div *ngIf="isAuthenticated && userDetails" class="dropdown">
 
@@ -63,7 +63,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -85,10 +85,6 @@
                 </form>
 
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div> -->
         </div>
     </div>
-</div>
+</div> -->
