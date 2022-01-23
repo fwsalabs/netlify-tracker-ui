@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { CommonService } from '../common.service';
 
 @Component({
@@ -9,11 +10,14 @@ import { CommonService } from '../common.service';
 })
 export class LayoutComponent implements OnInit {
 
+  isAuthenticated!: boolean;
+
   constructor(
-    private commonService: CommonService
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authService.isAuthenticated
   }
 
 }

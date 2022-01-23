@@ -11,28 +11,15 @@
                 <li><a routerLink="/sites" class="nav-link px-2 text-black"> Sites </a></li>
             </ul>
 
-
-
-            <div class="profile-dropdown">
-
-
-            </div>
-
-
             <div class="text-end">
 
-                <a *ngIf="!isAuthenticated"
+                <!-- <a *ngIf="!isAuthenticated"
                     href="https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123"
                     class="btn btn-outline-dark me-2">
                     Login
-                </a>
+                </a> -->
 
-                <!-- <button *ngIf="!isAuthenticated" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#loginModal">
-                    Login
-                </button> -->
-
-                <div *ngIf="isAuthenticated && userDetails" class="dropdown">
+                <div *ngIf="userDetails" class="dropdown">
 
                     <button class="btn btn-link text-decoration-none text-dark" type="button" id="profileDropdownMenu"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,32 +46,3 @@
         </div>
     </div>
 </header>
-
-
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel"> Login </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <form [formGroup]="loginForm" (submit)="submitLoginForm()">
-
-                    <div class="mb-3">
-                        <label for="email" class="col-form-label">Email Address</label>
-                        <input type="email" formControlName="email" class="form-control" id="email">
-                    </div>
-
-
-                    <button type="submit" class="btn btn-primary"> Login </button>
-
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div> -->

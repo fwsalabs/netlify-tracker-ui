@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutComponent } from './common/layout/layout.component';
 import { AuthComponent } from './core/auth/auth.component';
+import { AuthGuard } from './core/auth/auth.guard';
+import { LoginComponent } from './core/auth/login/login.component';
 
 const routes: Routes = [
   {
@@ -9,16 +12,30 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: "home",
+    component: LoginComponent
+  },
+  {
     path: "oauth2/code/github",
     component: AuthComponent
   },
   {
-    path: "sites",
-    loadChildren: () => import('./features/sites/sites.module').then(m => m.SitesModule)
-  },
-  {
-    path: "repos",
-    loadChildren: () => import('./features/repo/repo.module').then(m => m.RepoModule)
+    path: "",
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: "sites",
+        loadChildren: () => import('./features/sites/sites.module').then(m => m.SitesModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "repos",
+        loadChildren: () => import('./features/repo/repo.module').then(m => m.RepoModule),
+        canActivate: [AuthGuard]
+      },
+
+    ]
   },
   {
     path: '**',

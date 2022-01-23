@@ -41,10 +41,34 @@ export class AuthService {
     return isAuthenticated;
   }
 
+  private get role() {
+    return this.getLs("role");
+  }
+
+
+  get isAdmin() {
+    let isAdmin: boolean = false;
+    const role = this.role;
+    if (role === "admin") {
+      isAdmin = true;
+    }
+    return isAdmin;
+  }
+
+
+  get isUser() {
+    let isUser: boolean = false;
+    const role = this.role;
+    if (role === "user") {
+      isUser = true;
+    }
+    return isUser;
+  }
+
   logout() {
     localStorage.clear();
     this.userDetails$.next(undefined);
-    this.router.navigateByUrl('/sites');
+    this.router.navigateByUrl('/home');
   }
 
   checkUserExist({ email }: { email: string }) {

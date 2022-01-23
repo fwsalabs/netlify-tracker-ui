@@ -69,6 +69,7 @@ export class CommonService {
 
                 this.authService.userDetails$.next(res);
                 this.setLs("username", this.userName);
+                this.setLs("role", emailCheckRes.role)
                 this.router.navigateByUrl("/sites");
 
               }

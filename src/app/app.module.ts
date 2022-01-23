@@ -10,13 +10,15 @@ import { LayoutComponent } from './common/layout/layout.component';
 import { AuthComponent } from './core/auth/auth.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './core/auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LayoutComponent,
-    AuthComponent
+    AuthComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
