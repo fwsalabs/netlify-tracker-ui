@@ -48,7 +48,7 @@ export class AuthComponent implements OnInit {
             console.log(res);
 
             if (res?.error === "bad_verification_code") {
-              window.location.href = "https://github.com/login/oauth/authorize?client_id=28d31585afbdbae08125&scope=user repo admin:org&state=123"
+              window.location.href = "https://github.com/login/oauth/authorize?client_id=2afa85f6b65eddb897b5&scope=user repo admin:org&state=123"
             }
 
             // TODO: Remove this code in future
