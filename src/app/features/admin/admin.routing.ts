@@ -11,10 +11,10 @@ export const adminRoutes: Routes = [
                 redirectTo: "projects",
                 pathMatch: "full"
             },
-            {
-                path: "projects",
-                loadChildren: () => import("./projects/projects.module").then(m => m.ProjectsModule)
-            },
+            // {
+            //     path: "projects",
+            //     loadChildren: () => import("./projects/projects.module").then(m => m.ProjectsModule)
+            // },
             {
                 path: "sites",
                 loadChildren: () => import("./sites/sites.module").then(m => m.SitesModule)
