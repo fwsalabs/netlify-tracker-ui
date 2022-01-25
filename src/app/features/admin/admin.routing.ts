@@ -8,7 +8,7 @@ export const adminRoutes: Routes = [
         children: [
             {
                 path: "",
-                redirectTo: "projects",
+                redirectTo: "sites",
                 pathMatch: "full"
             },
             // {
