@@ -15,10 +15,10 @@ export const adminRoutes: Routes = [
                 path: "projects",
                 loadChildren: () => import("./projects/projects.module").then(m => m.ProjectsModule)
             },
-            {
-                path: "sites",
-                loadChildren: () => import("./sites/sites.module").then(m => m.SitesModule)
-            }
+            // {
+            //     path: "sites",
+            //     loadChildren: () => import("./sites/sites.module").then(m => m.SitesModule)
+            // }
         ]
     }
 ]
