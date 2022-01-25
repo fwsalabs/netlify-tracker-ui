@@ -1,0 +1,31 @@
+<h2 mat-dialog-title> Create Project </h2>
+<div mat-dialog-content>
+
+    <form [formGroup]="form" (submit)="submitForm()">
+
+        <div class="mb-1">
+            <label for="repoName" class="block text-sm font-medium text-gray-700">Repository Name</label>
+            <div class="mt-1">
+                <input type="text" formControlName="repoName" name="repoName" id="repoName" pattern="[a-zA-Z -]{4,30}"
+                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    placeholder="Example: todo-app-ui">
+            </div>
+        </div>
+
+        <div class="mt-4 mb-1 flex justify-end">
+
+            <button type="button" (click)="onNoClick()"
+                class="mr-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Cancel
+            </button>
+
+            <button type="submit"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                Create
+            </button>
+
+        </div>
+
+    </form>
+
+</div>

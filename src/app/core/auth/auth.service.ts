@@ -11,14 +11,15 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   private secureLs: SecureLS;
+  userDetails$: BehaviorSubject<any>;
   private db_url = environment.db_api_url;
-  userDetails$ = new BehaviorSubject<any>(undefined);
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {
     this.secureLs = new SecureLS({ encodingType: 'aes', encryptionSecret: 'hastaLaVistaBaby' });
+    this.userDetails$ = new BehaviorSubject(undefined)
   }
 
   getLs(key: string) {
@@ -34,11 +35,16 @@ export class AuthService {
     return this.http.get(url);
   }
 
+
   get isAuthenticated() {
     let isAuthenticated: boolean = false;
     const token = this.getLs('accessToken');
     if (token && token !== null) { isAuthenticated = true };
     return isAuthenticated;
+  }
+
+  get loggedInUser() {
+    return this.getLs("username");
   }
 
   private get role() {
@@ -71,9 +77,25 @@ export class AuthService {
     this.router.navigateByUrl('/home');
   }
 
+
+  getUserDetails() {
+    if (this.userDetails$.value) {
+      return;
+    }
+    const accessToken = this.getLs("accessToken");
+    const url = "https://api.github.com/user";
+    return this.http.get(url, {
+      headers: {
+        "Authorization": "Bearer " + accessToken
+      }
+    });
+  }
+
+
   checkUserExist({ email }: { email: string }) {
     return this.http.get(this.db_url + "users/check/" + email);
   }
+
 
 
 }

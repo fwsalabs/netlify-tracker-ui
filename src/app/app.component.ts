@@ -1,26 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from './core/auth/auth.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
-  
-  <router-outlet></router-outlet>
-
+    <router-outlet></router-outlet>
   `,
   styles: []
 })
-export class AppComponent implements OnInit {
-
-  isAuthenticated!: boolean;
-
-  constructor(
-    private authService: AuthService
-  ) { }
-
-  ngOnInit(): void {
-    this.isAuthenticated = this.authService.isAuthenticated
-  }
-
-
+export class AppComponent {
+  title = 'netlify-tracker-ui';
 }

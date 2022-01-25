@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+*{
+    font-family: 'Hind Madurai', sans-serif !important;
+}
+
+html, body { 
+    height: 100%;
+}
+
+.cdk-global-overlay-wrapper{
+    align-items: flex-start !important; 
+    margin-top: 1rem !important;
+}
+
+:root {
+    --animate-duration: 400ms;
+    --animate-delay: 0.9s;
+}

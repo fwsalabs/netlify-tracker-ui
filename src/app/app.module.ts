@@ -1,33 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './common/layout/header/header.component';
-import { LayoutComponent } from './common/layout/layout.component';
+import { HttpClientModule } from "@angular/common/http"
+
+import { HomeComponent } from './home/home.component';
+import { IconsModule } from './shared/icons/icons.module';
 import { AuthComponent } from './core/auth/auth.component';
-import { ToastrModule } from 'ngx-toastr';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './core/auth/login/login.component';
+
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    LayoutComponent,
+    HomeComponent,
     AuthComponent,
-    LoginComponent
+    // NgVarDirective
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
+    IconsModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,22 @@
+<div class="py-6" *ngIf="(projectDetail | async) as project">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mb-6 flex justify-between items-stretch">
+        <h1 class="!mb-0 text-2xl font-semibold text-gray-900">
+            {{ project['repoName'] | uppercase }}
+        </h1>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+
+        {{ project | json }}
+
+        <div *ngIf="project">
+
+            github api
+
+        </div>
+
+
+    </div>
+
+</div>
