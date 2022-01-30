@@ -8,17 +8,18 @@ import { siteRoutes } from './sites.routing';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { NgVarDirective } from 'src/app/shared/directive/ng-var.directive';
 import { CreateSitesComponent } from './create-sites/create-sites.component';
+import { CustomDirectivesModule } from 'src/app/shared/directive/custom-directives.module';
 
 
 
 @NgModule({
   declarations: [
-    NgVarDirective,
     ListSitesComponent,
     CreateSitesComponent
   ],
   imports: [
     CommonModule,
+    CustomDirectivesModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(siteRoutes),

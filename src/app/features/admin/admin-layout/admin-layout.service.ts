@@ -11,7 +11,6 @@ export class AdminLayoutService {
 
   public toggleSidebar() {
     this._showSidebar.next(!this._showSidebar.value);
-    console.log("updated sidebar status", this._showSidebar.value)
   }
 
 }

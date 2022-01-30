@@ -9,10 +9,24 @@ export class NgVarDirective {
     this.context.$implicit = this.context.ngVar = context;
 
     if (!this.hasView) {
-      this.vcRef.createEmbeddedView(this.templateRef, this.context);
+      this.viewContainer.createEmbeddedView(this.templateRef, this.context);
       this.hasView = true;
     }
   }
+
+  // @Input()
+  // set ngVar(condition: unknown) {
+  //   if (!condition && !this.hasView) {
+  //     this.viewContainer.createEmbeddedView(this.templateRef, {
+  //       $implicit: condition,
+  //       ngVar: condition,
+  //     });
+  //     this.hasView = true;
+  //   } else if (condition && this.hasView) {
+  //     this.viewContainer.clear();
+  //     this.hasView = false;
+  //   }
+  // }
 
   private context: {
     $implicit: unknown;
@@ -26,7 +40,7 @@ export class NgVarDirective {
 
   constructor(
     private templateRef: TemplateRef<any>,
-    private vcRef: ViewContainerRef
+    private viewContainer: ViewContainerRef
   ) { }
 
 }

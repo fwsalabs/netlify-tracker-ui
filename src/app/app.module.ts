@@ -11,13 +11,14 @@ import { AuthComponent } from './core/auth/auth.component';
 
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgVarDirective } from './shared/directive/ng-var.directive';
 
 @NgModule({
   declarations: [
+    // NgVarDirective,
     AppComponent,
     HomeComponent,
     AuthComponent,
-    // NgVarDirective
   ],
   imports: [
     BrowserModule,
