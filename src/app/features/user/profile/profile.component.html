@@ -1,0 +1,164 @@
+<!-- <header>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold leading-tight text-gray-900">
+            Profile
+        </h1>
+    </div>
+</header> -->
+<main>
+    <div *ngVar=" (profile | async) as _prof " class="max-w-7xl mx-auto px-4  sm:px-6 lg:px-8">
+        <!-- Replace with your content -->
+
+        <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="rounded-md overflow-hidden shadow">
+            <div>
+                <img class="h-32 w-full object-cover lg:h-48"
+                    src="https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt="">
+            </div>
+            <div class="max-w-6xl mx-auto sm:px-6 px-4 lg:px-4 pb-4">
+                <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
+                    <div class="flex">
+                        <!-- <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
+                            src="{{ _prof.avatar_url }}" alt=""> -->
+                    </div>
+                    <div
+                        class="mt-6 sm:mt-4 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
+                        <div class="sm:hidden md:block mt-6 min-w-0 flex-1">
+                            <div class="">
+                                <h1 class="!mb-0 text-2xl font-bold text-gray-900 truncate">
+                                    <!-- {{ _prof.name }} -->
+                                </h1>
+                                <span class="!mb-0 text-gray-500">
+                                    <!-- @{{ _prof.login }} -->
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-4 md:mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
+                            <!-- <button type="button"
+                                class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+                                <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                                <span>Message</span>
+                            </button> -->
+                            <button type="button"
+                                class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                <!-- Heroicon name: solid/phone -->
+                                <!-- <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg> -->
+                                <span>Dashboard</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden sm:block md:hidden mt-6 min-w-0 flex-1">
+                    <h1 class="!mb-0 text-2xl font-bold text-gray-900 truncate">
+                        <!-- {{ _prof.name }} -->
+                    </h1>
+                    <span class="!mb-0 text-gray-500">
+                        <!-- @{{ _prof.login }} -->
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mt-6 lg:flex lg:flex-row lg:items-start lg:gap-x-5">
+
+            <aside class="mb-6 px-2 py-4 sm:px-6 lg:py-4 lg:px-1 lg:flex-initial lg:w-2/6 bg-light shadow rounded-md">
+
+                <h1 class="!mb-2 px-2 !text-sm text-gray-700 !font-semibold">
+                    ACCOUNT SETTINGS
+                </h1>
+                <nav class="space-y-1">
+                    <!-- Current: "bg-gray-50 text-indigo-700 hover:text-indigo-700 hover:bg-white", Default: "text-gray-900 hover:text-gray-900 hover:bg-gray-50" -->
+                    <button (click)="selectedPortal = accountPortal"
+                        class="w-full bg-gray-50 text-indigo-700 hover:text-indigo-700 hover:bg-white group rounded-md px-3 py-2 flex items-center text-sm font-medium"
+                        aria-current="page">
+                        <svg class="text-indigo-500 group-hover:text-indigo-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="truncate">
+                            Account
+                        </span>
+                    </button>
+
+                    <button (click)="selectedPortal = integrationPortal"
+                        class="w-full text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
+                        <!-- Heroicon name: outline/view-grid-add -->
+                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
+                        </svg>
+                        <span class="truncate">
+                            Integrations
+                        </span>
+                    </button>
+
+                    <button
+                        class="w-full text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
+                        <!-- Heroicon name: outline/key -->
+                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                        </svg>
+                        <span class="truncate">
+                            Password
+                        </span>
+                    </button>
+
+                    <button
+                        class="w-full text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
+                        <!-- Heroicon name: outline/credit-card -->
+                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                        <span class="truncate">
+                            Plan &amp; Billing
+                        </span>
+                    </button>
+
+                    <button
+                        class="w-full text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
+                        <!-- Heroicon name: outline/user-group -->
+                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span class="truncate">
+                            Team
+                        </span>
+                    </button>
+
+                </nav>
+            </aside>
+
+            <div class="lg:px-0 lg:w-full">
+                <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+            </div>
+
+        </div>
+
+
+        <!-- /End replace -->
+    </div>
+</main>

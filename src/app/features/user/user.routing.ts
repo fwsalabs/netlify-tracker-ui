@@ -6,7 +6,10 @@ export const userRoutes: Routes = [
         path: "",
         component: DefaultLayoutComponent,
         children: [
-
+            {
+                path: "profile",
+                loadChildren: () => import("./profile/profile.module").then(m => m.ProfileModule)
+            }
         ]
     }
 ] 
