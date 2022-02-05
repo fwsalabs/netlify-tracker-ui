@@ -27,17 +27,19 @@ export class UserProjectsService {
   }
 
   getAllProjects() {
-    const url = this.base_url + "repos";
+    const username = this.getLs("username");
+    const url = this.base_url + "projects/user/" + username;
     return this.http.get(url);
   }
 
-  createProjectRequest(data: { accountName: string, repoName: string, createdBy: string }) {
-    const url = this.base_url + "repos";
+  createProjectRequest(data: { name: string, description: string }) {
+    const username = this.getLs("username");
+    const url = this.base_url + "projects/user/" + username;
     return this.http.post(url, data);
   }
 
   getProject(id: number) {
-    const url = this.base_url + "repos/" + id;
+    const url = this.base_url + "projects/" + id;
     return this.http.get(url);
   }
 

@@ -6,6 +6,7 @@ import { ProjectsService } from 'src/app/features/admin/projects/projects.servic
 import { CreateSitesComponent } from 'src/app/features/admin/sites/create-sites/create-sites.component';
 import { SitesService } from 'src/app/features/admin/sites/sites.service';
 import { CreateUserProjectComponent } from '../create-user-project/create-user-project.component';
+import { UserProjectsService } from '../user-projects.service';
 
 @Component({
   selector: 'app-list-user-project',
@@ -18,24 +19,28 @@ export class ListUserProjectComponent implements OnInit {
   sitesList!: Observable<any>;
 
   constructor(
-    private sitesService: SitesService,
+    private projectService: UserProjectsService,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.sitesList = this.sitesService.getAllSites();
+    this.sitesList = this.projectService.getAllProjects();
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateUserProjectComponent, {
       width: '40%',
-      panelClass: ["animate__animated", "animate__slideInDown"]
+      panelClass: [
+        "animate__animated",
+        "custom-dialog-top",
+        // "animate__slideInDown"
+      ]
     });
 
     dialogRef.afterClosed().subscribe((result: { message: string }) => {
       console.log('The dialog was closed');
       if (result && result.message === "success")
-        this.sitesList = this.sitesService.getAllSites();
+        this.sitesList = this.projectService.getAllProjects();
     });
   }
 

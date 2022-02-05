@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ProjectsService } from 'src/app/features/admin/projects/projects.service';
+import { UserProjectsService } from '../user-projects.service';
 
 @Component({
   selector: 'app-create-user-project',
@@ -19,7 +20,7 @@ export class CreateUserProjectComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private authService: AuthService,
-    private projectService: ProjectsService,
+    private projectService: UserProjectsService,
   ) { }
 
   ngOnInit(): void {
@@ -32,8 +33,8 @@ export class CreateUserProjectComponent implements OnInit {
 
   buildForm() {
     return this.formBuilder.group({
-      accountName: new FormControl("fwsalabs", Validators.required),
-      repoName: new FormControl("", [Validators.required, Validators.pattern('^[a-zA-Z -]+$')])
+      name: new FormControl("", Validators.required),
+      description: new FormControl("", [Validators.required, Validators.pattern('^[a-zA-Z -]+$')])
     })
   }
 
@@ -49,9 +50,9 @@ export class CreateUserProjectComponent implements OnInit {
     }
 
     const createdBy = this.authService.loggedInUser;
-    const repoObj = Object.assign(value, { createdBy })
+    // const projectObj = Object.assign(value, { createdBy })
 
-    this.projectService.createProjectRequest(repoObj)
+    this.projectService.createProjectRequest(value)
       .subscribe((res: any) => {
         console.log(res);
         this.dialogRef.close({ message: "success" })
