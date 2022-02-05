@@ -13,12 +13,32 @@ html, body {
     height: 100%;
 }
 
-.cdk-global-overlay-wrapper{
-    align-items: flex-start !important; 
-    margin-top: 1rem !important;
-}
-
 :root {
     --animate-duration: 400ms;
     --animate-delay: 0.9s;
+}
+
+
+.cdk-global-overlay-wrapper {
+    align-items: flex-start !important; 
+
+    .custom-dialog-top{
+        margin-top: 1rem !important;
+
+        &.cdk-overlay-pane{
+            animation-name: slideInDown;
+        }
+    }
+
+    .custom-dialog-right{
+        margin-top: 0 !important;
+        justify-content: flex-end !important;
+        
+        &.cdk-overlay-pane{
+            height: 100vh !important;
+            animation-name: slideInRight;
+        }
+    }
+
+
 }
