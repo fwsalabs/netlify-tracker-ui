@@ -5,6 +5,7 @@ import { CreateProjectComponent } from 'src/app/features/admin/projects/create-p
 import { ProjectsService } from 'src/app/features/admin/projects/projects.service';
 import { CreateSitesComponent } from 'src/app/features/admin/sites/create-sites/create-sites.component';
 import { SitesService } from 'src/app/features/admin/sites/sites.service';
+import { CreateUserProjectComponent } from '../create-user-project/create-user-project.component';
 
 @Component({
   selector: 'app-list-user-project',
@@ -26,7 +27,7 @@ export class ListUserProjectComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(CreateSitesComponent, {
+    const dialogRef = this.dialog.open(CreateUserProjectComponent, {
       width: '40%',
       panelClass: ["animate__animated", "animate__slideInDown"]
     });

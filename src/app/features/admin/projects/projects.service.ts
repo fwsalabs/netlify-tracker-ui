@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as SecureLS from 'secure-ls';
+import { GLOBAL_CONSTANT } from 'src/app/core/constant/global.constant';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,7 +15,7 @@ export class ProjectsService {
   constructor(
     private http: HttpClient
   ) {
-    this.secureLs = new SecureLS({ encodingType: 'aes', encryptionSecret: 'hastaLaVistaBaby' });
+    this.secureLs = new SecureLS({ encodingType: 'aes', encryptionSecret: GLOBAL_CONSTANT.APP_SECRET });
   }
 
   getLs(key: string) {
