@@ -78,11 +78,11 @@ export class AuthService {
   }
 
 
-  getUserDetails() {
+  getUserDetails(accessToken: string) {
     if (this.userDetails$.value) {
       return;
     }
-    const accessToken = this.getLs("accessToken");
+    // const accessToken = this.getLs("accessToken");
     const url = "https://api.github.com/user";
     return this.http.get(url, {
       headers: {

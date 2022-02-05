@@ -9,6 +9,10 @@ export const userRoutes: Routes = [
             {
                 path: "profile",
                 loadChildren: () => import("./profile/profile.module").then(m => m.ProfileModule)
+            },
+            {
+                path: "projects",
+                loadChildren: () => import("./user-projects/user-projects.module").then(m => m.UserProjectsModule)
             }
         ]
     }

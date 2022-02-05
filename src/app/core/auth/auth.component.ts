@@ -52,55 +52,58 @@ export class AuthComponent implements OnInit {
             }
 
             // TODO: Remove this code in future
-            this.authService.setLs("accessToken", res.access_token);
-            this.authService.setLs("scope", res.scope);
-            this.authService.setLs("token_type", res.token_type);
-            this.router.navigateByUrl("/admin")
+            // this.authService.setLs("accessToken", res.access_token);
+            // this.authService.setLs("scope", res.scope);
+            // this.authService.setLs("token_type", res.token_type);
+            // this.router.navigateByUrl("/admin")
 
-            // this.authService.getUserDetails()
-            //   ?.subscribe(
-            //     (res: any) => {
-            //       const username = res.login;
+            this.authService.getUserDetails(res.access_token)
+              ?.subscribe(
+                (userDetails: any) => {
+                  const username = userDetails.login;
 
-            //       if (username) {
-            //         this.authService.checkUserExist({ email: username })
-            //           .subscribe(
-            //             (emailCheckRes: any) => {
+                  if (username) {
+                    this.authService.checkUserExist({ email: username })
+                      .subscribe(
+                        (emailCheckRes: any) => {
 
-            //               console.log(emailCheckRes);
-            //               const { exist } = emailCheckRes;
+                          console.log(emailCheckRes);
+                          const { exist } = emailCheckRes;
 
-            //               if (exist === false) {
-            //                 this.authService.logout();
-            //                 this.toastr.error("User Does Not Exist");
-            //                 this.router.navigateByUrl("/");
-            //                 return;
-            //               }
+                          if (exist === false) {
+                            this.authService.logout();
+                            this.toastr.error("User Does Not Exist");
+                            this.router.navigateByUrl("/");
+                            return;
+                          }
 
-            //               const { role } = emailCheckRes;
-            //               this.authService.userDetails$.next(res);
+                          const { role } = emailCheckRes;
+                          this.authService.userDetails$.next(res);
 
-            //               this.authService.setLs("accessToken", res.access_token);
-            //               this.authService.setLs("scope", res.scope);
-            //               this.authService.setLs("token_type", res.token_type);
+                          this.authService.setLs("accessToken", res.access_token);
+                          this.authService.setLs("scope", res.scope);
+                          this.authService.setLs("token_type", res.token_type);
 
-            //               this.authService.setLs("username", username);
-            //               this.authService.setLs("role", role)
+                          this.authService.setLs("username", username);
+                          this.authService.setLs("role", role)
 
-            //               if (role === "admin") {
-            //                 this.router.navigateByUrl("/admin")
-            //               } else if (role === "user") {
-            //                 this.router.navigateByUrl("/user")
-            //               } else {
-            //                 this.toastr.warning("Invalid Role");
-            //                 this.router.navigateByUrl("/home")
-            //               }
+                          console.log(role === "user");
+                          console.log(res);
 
-            //             }
-            //           )
-            //       }
+                          if (role === "admin") {
+                            this.router.navigateByUrl("/admin")
+                          } else if (role === "user") {
+                            this.router.navigateByUrl("/user")
+                          } else {
+                            this.toastr.warning("Invalid Role");
+                            this.router.navigateByUrl("/home")
+                          }
 
-            //     });
+                        }
+                      )
+                  }
+
+                });
 
 
           }, (err: any) => {
